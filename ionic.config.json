@@ -1,5 +1,7 @@
 {
   "name": "mybilletera",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
