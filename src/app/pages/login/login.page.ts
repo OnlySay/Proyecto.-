@@ -17,6 +17,7 @@ export class LoginPage implements OnInit {
 slides: IonSlides;
 
  
+// JHJGVJhgjoasdjsakdjaskdjskjaskjd
 
 
 loginUser={
