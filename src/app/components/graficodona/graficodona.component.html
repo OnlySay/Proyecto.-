@@ -1,0 +1,18 @@
+<div>
+  <div>
+    <div class="chart" *ngIf="chartReady" >
+      <canvas baseChart
+        [data]="Chartcondatos"
+        [labels]="pieChartLabels"
+        [chartType]="pieChartType"  
+        [options]="pieChartOptions"
+        [colors]="pieChartColors"
+        [legend]="pieChartLegend">
+      </canvas>
+    </div>
+  </div>
+</div>
+<div>
+  <ion-button (click)="pieChartLegend=!pieChartLegend">agrandar</ion-button>
+<ion-button (click)="changeLegendPosition()">mas facil de leer</ion-button>
+</div>

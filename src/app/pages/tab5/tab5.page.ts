@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { dineroeg } from 'src/app/interfaces/interfaces';
-import { PostsComponent } from '../../components/posts/posts.component';
+
 import { PostsService } from 'src/app/services/posts.service';
-import { dineroing } from '../../interfaces/interfaces';
+
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-tab5',
+  templateUrl: 'tab5.page.html',
+  styleUrls: ['tab5.page.scss']
 })
-export class Tab2Page {
+export class Tab5Page {
 
   
   dineroeg= {

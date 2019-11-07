@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {  dineroeg } from '../../interfaces/interfaces';
+import {  dineroeg, dineroing } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-posts',
@@ -8,7 +8,7 @@ import {  dineroeg } from '../../interfaces/interfaces';
 })
 export class PostsComponent implements OnInit {
 
-  @Input() posts: dineroeg[ ] = [ ];
+  @Input() posts: dineroeg[] = [];
 
   constructor() { }
 

@@ -1,6 +1,7 @@
-<ion-header>
+<ion-header class = "titulo">
   <ion-toolbar>
-    <ion-title>
+    <ion-title >
+        <ion-icon solt="" name="planet" ></ion-icon>
       ¡bienvenido!
     </ion-title>
   </ion-toolbar>
@@ -8,14 +9,44 @@
 
 
 
+<div class ="principal">
+    <h2>Gastos Principales</h2>
+</div>
+
+
+
 
 <ion-content>
     <!-- Refresher -->
+    <ion-refresher slot="fixed" (ionRefresh)="recargar($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
 
     <!-- Posts -->
-    <app-posts [posts]="posts"  ></app-posts>
+    <app-posts [posts]="posts"  ></app-posts>    
 
     <!-- Infinite Scroll -->
+    
+   <ion-infinite-scroll [disabled]="!habilitado"
+                    threshold="100px" 
+                    (ionInfinite)="siguientes($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>
+
+
+<div class ="principal">
+
+    <h2>Hablemos... graficamente</h2>
+
+</div>
+
+
+<app-graficolinea></app-graficolinea>
+
 
 

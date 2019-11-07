@@ -13,6 +13,10 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 
 
+
+
+
+
 //forRoot es en angular para decir que es una coleccion de servicios 
 
 @NgModule({
