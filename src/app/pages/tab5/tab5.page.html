@@ -1,0 +1,58 @@
+<ion-header class = "titulo">
+        <ion-toolbar>
+          <ion-title id="titulo">
+              <ion-icon solt="" name="planet" ></ion-icon>
+            Calendario
+          </ion-title>
+        </ion-toolbar>
+        
+      </ion-header>
+
+<!-- <ion-row>
+  <ion-col>
+    <ion-button expand="block" [color]="calendar.mode == 'month'? 'primary': 'secondary '" (click)= "changeMode('month')">Mes</ion-button>
+  </ion-col>
+
+  <ion-col>
+    <ion-button expand="block" [color]="calendar.mode == 'week'? 'primary': 'secondary '" (click)= "changeMode('week')">Semana</ion-button>
+  </ion-col>
+
+  <ion-col>
+    <ion-button expand="block" [color]="calendar.mode == 'day'? 'primary': 'secondary '" (click)= "changeMode('day')">Día</ion-button>
+  </ion-col>
+
+</ion-row> -->
+
+<ion-row>
+    <ion-row>
+        <ion-button expand="block" (click)="hoy()">
+          ¿Que dia es hoy?
+        </ion-button>
+    </ion-row>
+</ion-row>
+<br>
+
+
+
+<ion-content class="ion-padding"> 
+
+    
+    <ion-title id="titulo">
+        {{viewTitle}}
+
+    </ion-title>
+
+
+
+    <calendar [eventSource]="eventSource"
+              [calendarMode]="calendar.mode"
+              [currentDate]="calendar.currentDate"
+              (onCurrentDateChanged)="onCurrentDateChanged($event)"
+              (onEventSelected)="onEventSelected($event)"
+              (onTitleChanged)="onViewTitleChanged($event)"
+              step="30"
+              startinDayWeek="1"
+              >
+    
+</calendar>
+</ion-content>

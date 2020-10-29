@@ -1,0 +1,46 @@
+
+
+<div class="post">
+    <ion-item lines="none" >
+   
+   
+     <ion-label id="kappa">
+       <h1> $ {{post4.cantidadI | FiltroPipe }}   </h1>
+       <h2> Texto: {{post4.textoI}}  </h2>
+      
+     </ion-label>
+    </ion-item>
+
+    <!-- ngIf imgs.... -->
+  <ion-slides pager="true" *ngIf="post4.imgs.length > 1">
+
+        <ion-slide *ngFor="let img of post4.imgs"
+                   class="  image-slide"
+                   [style]=" (img | imagen: post4.usuario._id ) | domSanitizer ">
+
+        </ion-slide>
+
+      </ion-slides>
+    
+      <ion-slides *ngIf="post4.imgs.length === 1" [options]="slideSoloOpts">
+    
+        <ion-slide class="image-slide"
+                     [style]=" (post4.imgs[0] | imagen: post4.usuario._id ) | domSanitizer ">
+        </ion-slide>
+    
+      </ion-slides>
+
+  
+   </div>
+
+   
+   
+   
+   <ion-item lines="none">
+   
+       <ion-label>
+         
+         <h3>{{ post4.usuario.nombre }}</h3>
+         <h2> {{post4.fechadeingreso  | date:'mediumDate'}} </h2>
+       </ion-label>
+     </ion-item>

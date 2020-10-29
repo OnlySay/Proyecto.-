@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ChartType, ChartOptions, Chart, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { DineroService } from '../../services/dinero.service';
-import { Usuario, dineroing, dineroeg } from '../../interfaces/interfaces';
+import { PostsService } from '../../services/posts.service';
+import { Usuario, dineroing, dineroeg, graficodona } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-graficodona',
@@ -15,26 +16,46 @@ export class GraficodonaComponent implements OnInit {
 
   dineroings: dineroing[] = [];
   dineroegs: dineroeg []= [];
+  posts: dineroeg[] =[];
+  habilitado =true;
+
+  posts2: dineroing[]= [];
 
   dineroings2 ={}
 
-constructor(private dineroService:DineroService) { }
+  graficodona: graficodona [] = [];
+
+constructor(private dineroService:DineroService,
+            private postsService: PostsService) { }
 
 ngOnInit() {
 
-  this.dineroService.getDinero()
-  .subscribe(resp=>{
-    console.log(resp);
-    this.dineroings.push( ...resp.dineroing)
+
+  
+
+  
+//  this.dineroings2 = this.dineroService.getDinero();
+//  console.log(this.dineroings2);
+
+  this.calculoDona(); 
+  
+  this.postsService.EventoGrafico 
+  .subscribe(dinero =>{
+
+  this.pieChartData = [];
+
+  this.graficodona = [];
+
+
+  this.calculoDona();
+  console.log("bueno esto es una berificacioasjdas")
   });
 
   
-
-  
-  this.dineroings2 = this.dineroService.getDinero();
-  console.log(this.dineroings2);
-  
 }
+
+
+
 public pieChartOptions: ChartOptions = {
   responsive: true,
   legend: {
@@ -49,10 +70,85 @@ public pieChartOptions: ChartOptions = {
     },
   }
 };
-public pieChartLabels: Label[] = [['A'], ['B'], 'C'];
-public pieChartData: number[]= [300,300,300];
+
+
+
+public pieChartLabels: Label[] = [['Gastos'], ['Ingresos'] ];
+public pieChartData: number[]= [];
 public pieChartType: ChartType = 'pie';
 public pieChartLegend = true;
+
+
+
+calculoDona(){
+  this.postsService.getPostsC()
+    .subscribe(resp=>{
+      
+    
+      this.graficodona.push(...resp.dineroeg);
+      this.graficodona.push(...resp.dineroing);
+
+      console.log("start operations ");
+
+      let precio = 0;
+      let cantidad  = 0;
+
+
+    
+
+      this.graficodona.map(item =>{
+
+
+        if(item.cantidadI !== undefined){
+
+          let cantidad3 : number;
+
+          cantidad3 = parseInt(item.cantidadI +"")
+
+          console.log ("esta es cantidad " + cantidad3);
+
+
+         cantidad +=cantidad3;
+        }
+
+      });
+
+      this.graficodona.map(item =>{
+
+        if(item.precioD !== undefined){
+
+          let precio3 : number;
+
+          precio3 = parseInt(item.precioD +"")
+
+          console.log("esto es precio"+ precio3);
+
+          precio += precio3;
+
+        }
+
+      });
+
+
+      if(true){
+
+        console.log("precio "+precio)
+
+        console.log("cantidad "+  cantidad)
+
+
+   
+        this.pieChartData = [precio,cantidad]
+
+        console.log(this.pieChartData)
+      }
+      
+     });
+     
+    
+}
+
+
 
 public pieChartColors = [
   {

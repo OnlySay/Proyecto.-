@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {  dineroeg } from '../../interfaces/interfaces';
+import { dineroeg, Usuario, dineroing } from '../../interfaces/interfaces';
+import { UsuarioService } from '../../services/usuario.service';
+
 
 @Component({
   selector: 'app-post',
@@ -10,8 +12,18 @@ export class PostComponent implements OnInit {
 
   @Input () post: dineroeg ={};
 
-  constructor() { }
+  slideSoloOpts={
+    allowSlideNext: false,
+    allowSlidePrev: false
+  };
 
-  ngOnInit() {}
+
+  
+  constructor(private usuarioService: UsuarioService) { }
+
+  ngOnInit(){
+    
+  }
+
 
 }

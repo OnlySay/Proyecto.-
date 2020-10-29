@@ -20,15 +20,15 @@ slides: IonSlides;
 
 
 loginUser={
-  email:'simonkinmaster@gmail.com',
-  password:'simons334911'
+  email:'',
+  password:''
 }
 
 registerUser: Usuario={
 
-  email:'simonkinmaster2',
-  password:'123',
-  nombre: 'simon',
+  email:'',
+  password:'',
+  nombre: '',
   avatar:'av-1.png'
 
 }
@@ -67,7 +67,7 @@ registerUser: Usuario={
     this.navCtrl.navigateRoot('/main/tabs/tab1',{animated:true});
   }else{
     //mostrar alerta de usuario y contraseña no correctos
-    this.UiServiceService.alertaInformativa('ya existe el correo ')
+    this.UiServiceService.alertaInformativaR('ya existe el correo ')
   }
   }
 

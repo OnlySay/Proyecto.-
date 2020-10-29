@@ -8,20 +8,73 @@
  </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
-        <app-graficodona></app-graficodona>
-
-</ion-content>
-
-
+    
 
 <ion-content>
+        
+<div class ="principal">
+                <ion-title id="tituloxs">
+                      <h1>
+                        <ion-icon solt="" name="cash" color="success" ></ion-icon>
+                                Veamos que tal te va c:
+                        <ion-icon solt="" name="cash" color="success" ></ion-icon>
+                      </h1>
+                </ion-title>
+            </div>
+        <div class ="algo">
+          <ion-card >
+                <ion-card-header color="light">
+                    <ion-card-subtitle>El total es:</ion-card-subtitle>
+                    <ion-card-title> $ {{ viewtitle2 | FiltroPipe}}</ion-card-title>
+                </ion-card-header>
+          </ion-card>
 
-        <app-graficolinea></app-graficolinea>
+        </div>
+        
+            
+            
+        <app-graficodona>
+        </app-graficodona>
+        <ion-card>
+                <ion-card-header>
+                        <ion-card-subtitle> Esto cambiara dependiendo de cuanto gastes  </ion-card-subtitle>
+                        <ion-card-title> <ion-icon solt="" name="cash" color="success" ></ion-icon>  
+                                        {{viewtitle  }} {{vertitulo | number: '1.0-0' }}%
+                                        <ion-icon solt="" name="cash" color="success" ></ion-icon>
+                        </ion-card-title>
 
+                </ion-card-header>
+
+                <ion-card-content>
+                        <h4 id="texto">
+                                {{viewtext}} 
+                         </h4>
+                         <h4 id=texto>
+                                {{viewtext1}}
+                         </h4>
+                         <h4 id=texto>
+                                {{viewtext2}}
+                        </h4>
+                        <h4 id=texto>
+                                {{viewtext3}}
+                        </h4>
+                        <h4 id=texto>
+                                {{viewtext4}}
+                        </h4>
+                        <h4 id=texto>
+                                {{viewtext5}}
+                        </h4>                    
+                        <h4 id=texto>
+                                {{viewtext6}}
+                          </h4>
+                </ion-card-content>
+
+        </ion-card>
+        
+                    
 
 </ion-content>
+      
 
 
 

@@ -2,7 +2,7 @@
   <div>
     <div class="chart" *ngIf="chartReady" >
       <canvas baseChart
-        [data]="Chartcondatos"
+        [data]="pieChartData"
         [labels]="pieChartLabels"
         [chartType]="pieChartType"  
         [options]="pieChartOptions"
@@ -12,7 +12,18 @@
     </div>
   </div>
 </div>
-<div>
-  <ion-button (click)="pieChartLegend=!pieChartLegend">agrandar</ion-button>
-<ion-button (click)="changeLegendPosition()">mas facil de leer</ion-button>
-</div>
+
+
+<ion-row>
+    <ion-col>
+          <div>
+              <ion-button shape="round"
+                          size="small"
+                          fill="outline"
+                          color="primary"
+                          text-align= "center"
+                          (click)="changeLegendPosition()">Mas Grande!</ion-button>
+          </div> 
+    </ion-col>
+</ion-row>
+

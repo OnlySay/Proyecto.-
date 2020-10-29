@@ -1,0 +1,24 @@
+
+   <div class="post">
+      <ion-item lines="none" >
+     
+     
+       <ion-label id="kappa">
+         <h1> $  {{post.cantidadI | FiltroPipe }} </h1>
+         <h2> Texto: {{post.textoI}}  </h2>
+       </ion-label>
+      </ion-item>
+     
+       
+       
+     </div>
+     
+     <ion-item lines="none">
+     
+         <ion-label>
+           
+           <h3>{{post.usuario.nombre }}</h3>
+           <h2> {{post.fechadeingreso | date:'mediumDate'}} </h2>
+         </ion-label>
+       </ion-item>
+    

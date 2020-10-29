@@ -1,6 +1,6 @@
 <ion-header class = "titulo">
   <ion-toolbar>
-    <ion-title >
+    <ion-title id="titulo">
         <ion-icon solt="" name="planet" ></ion-icon>
       ¡bienvenido!
     </ion-title>
@@ -8,15 +8,31 @@
 </ion-header>
 
 
-
 <div class ="principal">
-    <h2>Gastos Principales</h2>
+    <ion-title id="tituloxs">
+          <h1>
+            <ion-icon solt="" name="cash" color="success" ></ion-icon>
+            Saldo Total
+            <ion-icon solt="" name="cash" color="success" ></ion-icon>
+          </h1>
+
+        $ {{viewtitle | FiltroPipe}} 
+    </ion-title>
 </div>
 
 
 
 
-<ion-content>
+
+<div class ="principal">
+  
+    <h2>Historial de egresos</h2>
+</div>
+
+
+
+
+<ion-content color="danger">
     <!-- Refresher -->
     <ion-refresher slot="fixed" (ionRefresh)="recargar($event)">
         <ion-refresher-content></ion-refresher-content>
@@ -24,29 +40,58 @@
 
 
     <!-- Posts -->
-    <app-posts [posts]="posts"  ></app-posts>    
+    <div>
+        <app-posts [posts]="posts "  ></app-posts>    
+        
+    </div>
+   
+
+
 
     <!-- Infinite Scroll -->
     
-   <ion-infinite-scroll [disabled]="!habilitado"
-                    threshold="100px" 
-                    (ionInfinite)="siguientes($event)">
-      <ion-infinite-scroll-content
-        loadingSpinner="bubbles"
-        loadingText="Loading more data...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+    <ion-infinite-scroll  [disabled]="!habilitado"
+    threshold="150px"
+    (ionInfinite)="siguientes($event)">
+<ion-infinite-scroll-content>
+</ion-infinite-scroll-content>
+</ion-infinite-scroll>
 </ion-content>
+
+
 
 
 <div class ="principal">
 
-    <h2>Hablemos... graficamente</h2>
+    <h2>Historial de ingresos</h2>
 
 </div>
 
+<ion-content color="success">
 
-<app-graficolinea></app-graficolinea>
+  <!-- Refresher -->
+  <ion-refresher slot="fixed" (ionRefresh)="recargar2($event)">
+      <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Posts -->
+
+    <div>
+        <app-posts2 [posts2]="posts2 "  ></app-posts2>            
+    </div>
+
+
+    
+    <!-- Infinite Scroll -->
+    
+    <ion-infinite-scroll  [disabled]="!habilitado"
+    threshold="150px"
+    (ionInfinite)="siguientes2($event)">
+<ion-infinite-scroll-content>
+</ion-infinite-scroll-content>
+</ion-infinite-scroll>  
+</ion-content>
+
 
 
 

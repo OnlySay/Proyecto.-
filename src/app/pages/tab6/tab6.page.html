@@ -1,0 +1,91 @@
+<ion-header class = "titulo">
+  <ion-toolbar>
+    <ion-title id="titulo">
+        <ion-icon solt="" name="planet" ></ion-icon>
+      Historial De Boletas 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<div class ="principal">
+    <ion-title id="tituloxs">
+          <h1>
+               Gasto  // Ingreso
+          </h1>
+    </ion-title>
+</div>
+
+
+<ion-content color="primary">
+  
+  
+
+   <ion-slides >
+    <ion-slide>       
+        <ion-grid fixed>
+
+          
+                  <!-- Refresher -->
+    <ion-refresher slot="fixed" (ionRefresh)="recargar($event)">
+      <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <!-- Posts3 -->
+  <div>
+    <app-posts3 [posts3]="posts3"></app-posts3>
+      
+  </div>
+
+  <!-- Infinite Scroll -->
+  
+  <ion-infinite-scroll [disabled]="!habilitado"
+  threshold="100px" 
+  (ionInfinite)="siguientes($event)">
+ <ion-infinite-scroll-content
+   loadingSpinner="bubbles"
+   loadingText="Cargando...">
+ </ion-infinite-scroll-content>
+ </ion-infinite-scroll>
+          
+        
+              
+          </ion-grid>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-grid fixed>
+
+          <!-- Refresher -->
+  <ion-refresher slot="fixed" (ionRefresh)="recargar2($event)">
+    <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
+
+<!-- Posts -->
+
+  <div>
+      <app-posts4 [posts4]="posts4 "  ></app-posts4>            
+  </div>
+
+
+  
+  <!-- Infinite Scroll -->
+  
+  <ion-infinite-scroll  [disabled]="!habilitado"
+  threshold="150px"
+  (ionInfinite)="siguientes2($event)">
+<ion-infinite-scroll-content>
+</ion-infinite-scroll-content>
+</ion-infinite-scroll>  
+          
+            
+          </ion-grid>
+    </ion-slide>
+  </ion-slides>
+ 
+    </ion-content>
+  
+
+
+

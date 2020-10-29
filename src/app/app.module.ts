@@ -11,10 +11,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {HttpClientModule} from '@angular/common/http';
+import { PipesModule } from './pipes/pipes.module';
+
+//probando de distintas formas el calendario 
+import { Calendar } from '@ionic-native/calendar/ngx';
+import {NgCalendarModule} from 'ionic2-calendar';
 
 
+//camaracosas
+
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { FileTransfer} from '@ionic-native/file-transfer/ngx';
 
 
+//notificaciones locales
+
+import {LocalNotifications} from '@ionic-native/local-notifications/ngx'
 
 
 //forRoot es en angular para decir que es una coleccion de servicios 
@@ -26,12 +38,18 @@ import {HttpClientModule} from '@angular/common/http';
      IonicModule.forRoot(),
       AppRoutingModule,
       HttpClientModule,
-      IonicStorageModule.forRoot()
+      IonicStorageModule.forRoot(),
+      PipesModule,
+      NgCalendarModule
     ],
   providers: [
     StatusBar,
+    Camera,
+    FileTransfer,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    LocalNotifications,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Calendar
   ],
   bootstrap: [AppComponent]
 })

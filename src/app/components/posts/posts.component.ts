@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {  dineroeg, dineroing } from '../../interfaces/interfaces';
+import { dineroeg, dineroing, Usuario } from '../../interfaces/interfaces';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-posts',
@@ -9,12 +10,16 @@ import {  dineroeg, dineroing } from '../../interfaces/interfaces';
 export class PostsComponent implements OnInit {
 
   @Input() posts: dineroeg[] = [];
-
-  constructor() { }
+  
+  
+  constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {
+    console.log(this.posts);
 
-    console.log(this.posts)
   }
+
+  
+
 
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Storage } from '@ionic/storage';
-import { Usuario } from '../interfaces/interfaces';
+import { Usuario, dineroeg } from '../interfaces/interfaces';
 import { NavController } from '@ionic/angular';
 
 const URL= environment.url;
@@ -14,6 +14,8 @@ export class UsuarioService {
 
   token: string =null;
   private  usuario: Usuario ={};
+
+
 
   constructor(private http: HttpClient,
               private storage: Storage,
@@ -45,17 +47,27 @@ export class UsuarioService {
 
   }
 
+  logout(){
+    
+    this.token = null;
+    this.usuario = null;
+    this.storage.clear();
+    this.navCtlr.navigateRoot('/login',{animated:true});
+
+
+  }
+
   registro(usuario: Usuario){
 
     return new Promise( resolve => {
 
       this.http.post(`${URL}/user/create`,usuario)
-      .subscribe(resp => {
+      .subscribe( async resp => {
         console.log(resp);
       
       
         if (resp['ok']){
-          this.guardarToken(resp['token'] );
+         await this.guardarToken(resp['token'] );
           resolve(true);
         }else{
           this.token =null;

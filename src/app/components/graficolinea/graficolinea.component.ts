@@ -1,7 +1,8 @@
 import { Component, ViewChild , OnInit} from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
-import { dineroing } from '../../interfaces/interfaces';
+import { dineroing, dineroeg, calendario2 } from '../../interfaces/interfaces';
+import { PostsService } from '../../services/posts.service';
 
 
 
@@ -13,18 +14,17 @@ import { dineroing } from '../../interfaces/interfaces';
 })
 export class GraficolineaComponent implements OnInit {
 
-  public lineChartData: ChartDataSets[]  = [
+  posts: dineroeg[] =[];
+  porcentajes: calendario2[]= [];
+
+  public lineChartData: ChartDataSets[]   = [
 
     { data: [65, 59, 80, 81, 56, 55, 40], label: 'Gastos' },
     { data: [28, 48, 40, 19, 86, 27, 90], label: 'Ganancia' },
     { data: [180, 480, 770, 90, 1000, 270, 400], label: 'Efectividad', yAxisID: 'y-axis-1' }
 
   ];
-  
-  
-  
 
- 
 
 
   public lineChartLabels: Label[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'];
@@ -100,9 +100,18 @@ export class GraficolineaComponent implements OnInit {
 
   @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
 
-  constructor() { }
+  constructor(private postsService: PostsService) { }
 
   ngOnInit() {
+
+    this.postsService.newPost
+    .subscribe(dinero =>{
+
+      this.posts.unshift(dinero);
+
+    
+    });
+    
   }
 
   public randomize(): void {
@@ -150,6 +159,76 @@ export class GraficolineaComponent implements OnInit {
     this.lineChartLabels[2] = ['1st Line', '2nd Line'];
     // this.chart.update();
   }
+
+  CalculoTotal(){
+    this.postsService.getPostsC()
+    .subscribe(resp=>{
+      
+    
+      this.porcentajes.push(...resp.dineroeg);
+      this.porcentajes.push(...resp.dineroing);
+
+      let suma = 0;
+      let resta = 0;
+      let totales= 0;
+
+      console.log("start operations ");
+      
+      this.porcentajes.map(item=>{
+      
+        if( item.precioD !== undefined)
+        {
+          let precio : number;
+
+          precio = parseInt( item.precioD + "")
+
+
+          console.log("resta " , precio);
+          
+          resta+=precio; 
+
+         
+      
+
+        }
+
+        console.log('precio total',resta);
+        
+      
+
+        if( item.cantidadI !== undefined)
+        {
+          let precio : number;
+          precio = parseInt( item.cantidadI + "")
+          // console.log("sumando " , precio);
+          
+          suma+=precio; 
+          // console.log("la suma va en ", suma);
+
+        }
+
+        if(true){
+
+        
+          
+        }
+  
+
+        
+
+      });
+
+
+      
+
+      
+
+
+     
+    });
+  }
+
+
 }
 
 

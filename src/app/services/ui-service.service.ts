@@ -11,11 +11,23 @@ export class UiServiceService {
 
   async alertaInformativa(message:string) {
     const alert = await this.alertController.create({
-      header: 'Alert',
+      header: '¡Cuidado!',
 
       
-      message: 'This is an alert message.',
-      buttons: ['Cancel', 'Open Modal', 'Delete']
+      message: 'Usuario/Contraseña Incorrectos',
+      buttons: ['Cerrar']
+    });
+
+    await alert.present();
+  }
+
+  async alertaInformativaR(message:string) {
+    const alert = await this.alertController.create({
+      header: '¡Cuidado!',
+
+      
+      message: 'Ya existe este usuario',
+      buttons: ['Cerrar']
     });
 
     await alert.present();
@@ -29,5 +41,7 @@ export class UiServiceService {
     });
     toast.present();
   }
+
+
 
 }

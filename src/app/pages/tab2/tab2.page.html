@@ -1,61 +1,190 @@
-<ion-header no-border>
-   <ion-toolbar>
-     <ion-title color="success">
-       Ingrese Deuda
-     </ion-title>
-   </ion-toolbar>
-</ion-header>
-  
-<ion-content padding>
-  
-<ion-list> 
-  <ion-item>
-      <ion-label position="floating">Nombre</ion-label>
-     <ion-textarea [(ngModel)]="dineroeg.nombreD"></ion-textarea>
- </ion-item>
+<ion-header class = "titulo">
+    <ion-toolbar>
+      <ion-title id="titulo">
+          <ion-icon solt="" name="planet" ></ion-icon>
+        ¿algun ingreso/gasto?
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+<ion-content color="light">
+  <ion-slides >
+      <ion-slide> 
+              
+          <ion-grid fixed>
+           
+              <ion-row>
+                <ion-col>
+                  <div class ="algo">
+                    <ion-card >
+                          <ion-card-header color="light">
+                              <ion-card-subtitle>Ingrese la cantidad de dinero (puede colocar fotos si es necesario)</ion-card-subtitle>
+                              <ion-card-title > Ingrese Un Monto</ion-card-title>
+                          </ion-card-header>
+                    </ion-card>
+          
+                  </div>
+                  
+                    <ion-list color="success"> 
 
- <ion-item>
-  <ion-label position="floating">Precio</ion-label>
- <ion-textarea [(ngModel)]="dineroeg.precioD"></ion-textarea>
-</ion-item>
+                        <ion-header class ="principal" collapse="condense" no-border>              
+                            <ion-toolbar>      
+                              <ion-title size="large"  color="dark">Ingreso de dinero</ion-title>
+                            </ion-toolbar>
+                          </ion-header>
+                  
+                          <ion-item>
+                            <ion-label position="floating" >Texto</ion-label>
+                           <ion-textarea [(ngModel)]="dineroing.textoI"></ion-textarea>
+                          </ion-item>
+ 
 
-<ion-buttons   slot="end">
-      <ion-button (click)="crearPost()"
-                  [disabled]="dineroeg.nombreD.length < 1"
-                  color="primary"
-                  >
-            Crear Ingreso
-      </ion-button> 
-  </ion-buttons>
-</ion-list>
-  
-</ion-content>
+                        <ion-item>
+                         <ion-label position="floating" >Precio</ion-label>
+                        <ion-textarea [(ngModel)]="dineroing.cantidadI"></ion-textarea>
+                       </ion-item>
+                       
+                      
+                      </ion-list>
+
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="6">
+                  <ion-button expand="full"
+                              shape="round"
+                            (click)="camara()">
+                    <ion-icon slot="start" name="camera"></ion-icon>
+                    Cámara
+                  </ion-button>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-button expand="full"
+                              shape="round"
+                              (click)="libreria()">
+                    <ion-icon slot="start" name="images"></ion-icon>
+                    Galería
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            
+              <ion-row>
+                <ion-col size="3" *ngFor="let image of tempImages">
+                  <ion-card>
+                    <img [src]="image | imageSanitizer">
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                  <ion-col>
+                      <ion-button shape="round"
+                                         size="small"
+                                         fill="outline"
+                                         (click)="crearPostIng()"
+                                        [disabled]="dineroing.cantidadI.length < 1"
+                                         color="primary">
+                                   Crear Ingreso
+                       </ion-button>
+                  </ion-col>
+                </ion-row>
+                
+            </ion-grid>
+      </ion-slide>
+
+      <ion-slide>
+        <ion-grid fixed>
+            
+              <ion-row>
+                <ion-col>
+                  
+                    <ion-list>
+                      
+                      <div class ="algo">
+                        <ion-card >
+                              <ion-card-header color="light">
+                                  <ion-card-subtitle>Si quiere que le recordemos alguna deuda desactive el boton de "esta pagado":</ion-card-subtitle>
+                                  <ion-card-title > Ingese Su Deuda</ion-card-title>
+                              </ion-card-header>
+                        </ion-card>
+              
+                      </div>
 
 
-<ion-toolbar>
-    <ion-title color="success">
-      ¿Algun tipo de ingreso?
-    </ion-title>
-  </ion-toolbar>
-
-
-<ion-content padding>
-  
-    <ion-list> 
-     <ion-item>
-      <ion-label position="floating" >Precio</ion-label>
-     <ion-textarea [(ngModel)]="dineroing.cantidadI"></ion-textarea>
-    </ion-item>
+                      <ion-item>
+                            <ion-label position="floating">Nombre</ion-label>
+                           <ion-textarea [(ngModel)]="dineroeg.nombreD"></ion-textarea>
+                       </ion-item>
     
-      <ion-buttons  slot="end">
-          <ion-button (click)="crearPostIng()"
-          [disabled]="dineroing.cantidadI.length < 1"
+                       <ion-item>
+                          <ion-label position="floating">Precio</ion-label>
+                         <ion-textarea [(ngModel)]="dineroeg.precioD"></ion-textarea>
+                        </ion-item>
+                        
+                        <ion-item>
+                            <ion-label  >¿Cuando?</ion-label>
+                            <ion-datetime [(ngModel)]="dineroeg.fechadepagD" displayFormat="MM/DD/YYYY HH:mm"  placeholder="Select Date"></ion-datetime>
+                          </ion-item>
+
+                            <ion-item>
+                                <ion-label > ¿Esta Pagado? </ion-label>
+                                <ion-checkbox [(ngModel)]="dineroeg.estadodepagD" color="secondary"></ion-checkbox>
+                            </ion-item> 
+
+                    </ion-list>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                  <ion-col size="6">
+                    <ion-button expand="full"
+                                shape="round"
+                              (click)="camara()">
+                      <ion-icon slot="start" name="camera"></ion-icon>
+                      Cámara
+                    </ion-button>
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-button expand="full"
+                                shape="round"
+                                (click)="libreria()">
+                      <ion-icon slot="start" name="images"></ion-icon>
+                      Galería
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              
+                <ion-row>
+                  <ion-col size="3" *ngFor="let image of tempImages">
+                    <ion-card>
+                      <img [src]="image | imageSanitizer">
+                    </ion-card>
+                  </ion-col>
+                </ion-row>
+              
+
+              <ion-row>
+                  <ion-col>
+                      <ion-button shape="round"
+                      size="small"
+                      fill="outline"
+                      (click)="crearPost()"
+                      [disabled]="dineroeg.nombreD.length < 1"
                       color="primary">
-                Crear Ingreso
-          </ion-button>
-      </ion-buttons>
-    </ion-list>
-      
-    </ion-content>
-      
+                          Crear Ingreso
+                      </ion-button> 
+                  </ion-col>
+                </ion-row>
   
+            </ion-grid>
+      </ion-slide>
+    </ion-slides>
+  </ion-content>
+
+
+
+
+
+  
+     
+    
+    
